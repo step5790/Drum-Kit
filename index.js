@@ -9,10 +9,12 @@ for (var i = 0; i < drumKey.length; i++) {
 function mouseClick() {
   var buttonInnerHTML = this.innerHTML;
   makeSound(buttonInnerHTML);
+  buttonAnimation(buttonInnerHTML);
 }
 
 document.addEventListener("keydown", function (event) {
   makeSound(event.key);
+  buttonAnimation(event.key);
 });
 
 function makeSound(key) {
@@ -63,4 +65,12 @@ function makeSound(key) {
     default:
       break;
   }
+}
+
+function buttonAnimation(pressKey) {
+  console.log("animation " + pressKey);
+  document.querySelector(`.${pressKey}`).classList.add("pressed");
+  setTimeout(() => {
+    document.querySelector(`.${pressKey}`).classList.remove("pressed");
+  }, 1000);
 }
