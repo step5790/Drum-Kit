@@ -3,11 +3,13 @@
 var drumKey = document.querySelectorAll(".drum");
 
 for (var i = 0; i < drumKey.length; i++) {
-  drumKey[i].addEventListener("click", function () {
-    var buttonInnerHTML = this.innerHTML;
-    console.log("click");
-    makeSound(buttonInnerHTML);
-  });
+  drumKey[i].addEventListener("click", mouseClick);
+}
+
+function mouseClick() {
+  var buttonInnerHTML = this.innerHTML;
+  console.log("click");
+  makeSound(buttonInnerHTML);
 }
 
 document.addEventListener("keydown", function (event) {
@@ -16,7 +18,7 @@ document.addEventListener("keydown", function (event) {
 
 function makeSound(key) {
   console.log(key.target);
-  switch (key) {
+  switch (key.key) {
     case "w":
       var audio = new Audio("/sounds/crash.mp3");
       audio.play();
